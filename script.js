@@ -1,9 +1,11 @@
-//create the grid
 const screen = document.querySelector('.screen');
 var side = 256;
 var squaresPerSide = 16;
 
+createGrid();
+makeItBlack();
 
+// creation of the grid
 function createGrid() {
     screen.style.cssText = 'grid-template-columns: repeat(' + squaresPerSide + ', 1fr); grid-template-rows: repeat(' + squaresPerSide + ',1fr)';
     for (let i = 0; i < side; i++) {
@@ -13,9 +15,7 @@ function createGrid() {
     }
 }
 
-createGrid();
-makeItBlack();
-
+// makes a new grid and keep the color-choice
 function createNewGrid() {
     var lastGrid = document.querySelector('.screen');
     while (lastGrid.firstChild) {
@@ -30,14 +30,7 @@ function createNewGrid() {
     else makeItRainbow();
 }
 
-function askSquaresPerSide() {
-    let squaresPerSide;
-    while (squaresPerSide == undefined || squaresPerSide < 1 || squaresPerSide > 128 || (isNaN(squaresPerSide))) {
-        squaresPerSide = prompt("Enter a number between 1 and 128 to specify pixels per side");
-        if (squaresPerSide == null) return;
-    }
-}
-
+// add the right color or create a new grid depending on the button pressed
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
@@ -48,13 +41,14 @@ buttons.forEach((button) => {
         } else if (button.id == 'colorDarker') {
             makeTheColorDarker();
         } else if (button.id == 'newGrid') {
-            askSquaresPerSide();
+            squaresPerSide = prompt("Enter a number between 1 and 128 to specify pixels per side");
             side = squaresPerSide * squaresPerSide;
             createNewGrid();
         }
     })
 })
 
+// make the squares black or white
 function makeItBlack() {
     var cellsToChangeColor = document.querySelectorAll('.white');
     for (let j = 0; j < cellsToChangeColor.length; j++) {
@@ -66,6 +60,7 @@ function makeItBlack() {
     }
 }
 
+// make the squares of a random color
 function makeItRainbow() {
     var cellsToChangeColor = document.querySelectorAll('.white');
     for (let j = 0; j < cellsToChangeColor.length; j++) {
@@ -77,7 +72,7 @@ function makeItRainbow() {
     }
 }
 
-
+// get a random color
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
