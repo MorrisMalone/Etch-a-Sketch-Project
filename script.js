@@ -72,6 +72,11 @@ function makeItRainbow() {
     }
 }
 
+// make the squares by 10% darker from white to black
+function shadesOfGrey() {
+    makeItBlack
+}
+
 // get a random color
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
