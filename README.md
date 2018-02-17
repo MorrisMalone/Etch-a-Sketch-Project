@@ -1,3 +1,5 @@
 This is a project from The Odin Project.
 
-I have to build a Etch a Sketch notepad or something similar
+Little notepad where you can draw on it with the mouse hovering it. Either from white to black(and back) or with a random color.
+
+You can see it <a href="https://morrismalone.github.io/Etch-a-Sketch-Project/">here</a>
